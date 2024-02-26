@@ -1,0 +1,31 @@
+/* Variabler, färgkoder, fontstyling */
+
+// <uniquifier>: Use a uniquifier for the class name
+// <weight>: Use a value from 400 to 900
+
+
+$font-stack: Helvetica, sans-serif;
+
+/* Variabler för färger */
+$primary-color: #3b83e2;
+$bodyBackgroundColor: #effafd;
+$mainbackgroundColor: lighten($primary-color, 80%);
+$menuColor: desaturate($primary-color, 30%);
+$menuHoverColor: darken($primary-color, 5%);
+$primary-link-hover: darken($primary-color, 20%);
+
+/* Mörkt tema */
+$primary-color-dark: #73a2e0;
+$bodyBackgroundColor-dark: #ecf1f3;
+$mainbackgroundColor-dark: lighten($primary-color-dark, 70%);
+$menuColor-dark: desaturate($primary-color-dark, 30%);
+$menuHoverColor-dark: darken($primary-color-dark, 5%);
+$primary-link-hover-dark: darken($primary-color-dark, 20%);
+
+/* Fontstyling */
+$primary-fonts: 'Playfair Display', serif;
+$font-color: #000;
+$heading-fontsize: 42px;
+$second-heading-fontsize: 24px;
+$paragraph-fontsize: 16px;
+$menu-fontsize: 18px;
