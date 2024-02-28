@@ -10,6 +10,7 @@ const housesURL = 'https://wizard-world-api.herokuapp.com/Houses';
 
 window.onload = init();
 
+let currentHouse = null; // För att kunna visa/dölja husen
 //
 
  // async function characters() {
@@ -57,10 +58,16 @@ function displayHouses(houseData) {
         const listItem = document.createElement('li');
         listItem.textContent = house.name;
 
-        // Lägg till en klickhändelsehanterare på varje li-element
+        // Händelsehanterare med klick för att visa eller dölja ett hus
         listItem.addEventListener('click', () => {
-            // Anropa funktionen för att visa mer info när ett hus klickas på
-            showHouseInfo(house);
+            // Om samma hus klickas på två gånger - dölj det
+            if (currentHouse === house) {
+                hideHouseInfo(); // Funktion som kallas på för att dölja hus
+                currentHouse = null;
+            } else { // Annars visa 
+                showHouseInfo(house); // Funktion som visar info om hus som klickats på
+                currentHouse = house;
+            }
         });
 
         // Lägg till det nya li-elementet till listan av hus
@@ -72,9 +79,17 @@ function showHouseInfo(house) {
     const houseInfo = document.getElementById('house-info');
     houseInfo.innerHTML = `
         <h2>${house.name}</h2>
-        <p>Founder: ${house.founder}</p>
-        <p>House Ghost: ${house.ghost}</p>
-        
+        <p>Grundare: ${house.founder}</p>
+        <p>Husfärger: ${house.houseColours}</p>
+        <p>Hus-spöke: ${house.ghost}</p>
+        <p>Djur: ${house.animal}</p>
+        <p>Element: ${house.element}</p>
+        <p>Sällskapsrum: ${house.commonRoom}</p>
     `;
 }
 
+// Dölj hus
+function hideHouseInfo() {
+    const houseInfo = document.getElementById('house-info');
+    houseInfo.innerHTML = ''; 
+}
