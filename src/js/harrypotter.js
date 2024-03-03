@@ -33,9 +33,6 @@ async function init() {
         const response = await fetch (housesURL);
         let houseData = await response.json();
 
-        // TA BORT INNAN PUBLICERING
-        console.table(houseData);
-
         // Ta med data till ny funktion
         displayHouses(houseData);
 
@@ -133,6 +130,9 @@ function showCharacter(characterData) {
         listItem.textContent = character.name;
         characterResult.appendChild(listItem);
     });
+
+     // TA BORT SEN
+     console.table(characterData);
 }
 
 // Rensa sökresultat
