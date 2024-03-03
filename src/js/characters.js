@@ -6,7 +6,7 @@ const searchBox = document.getElementById('search-container');
 const searchButton = document.getElementById('search-character-button');
 const characterResult = document.getElementById('character-result');
 
-// Eventlyssnare för klick på sök-knapp
+// Eventlyssnare för knappar
 searchButton.addEventListener('click', findCharacter);
 clear.addEventListener('click', clearCharacterResult);
 
@@ -17,12 +17,12 @@ async function findCharacter() {
             const response = await fetch(characterURL);
             let characterData = await response.json();
 
-            // Filtrera karaktärer baserat på söktermen
+            // Filtrera karaktärer baserat på söktermen, oavsett om användare söker med stora eller små bokstäver
             const filteredCharacters = characterData.filter(character => {
                 return character.name.toLowerCase().includes(searchTerm.toLowerCase());
             });
 
-            // Visa de filtrerade karaktärerna
+            // Ta med data och visa resultat
             showCharacter(filteredCharacters);
         } else {
             // Om söktermen är tom, rensa resultatet
