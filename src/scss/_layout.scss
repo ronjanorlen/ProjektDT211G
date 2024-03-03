@@ -21,7 +21,7 @@ body {
 main {
     width: 80%;
     margin: 3px auto;
-    flex-grow: 1;
+    min-height: 100vh;
     background: base.$mainBackgroundColor;
     @include component.custom-box-shadow;
     font-family: base.$primary-fonts;
@@ -146,6 +146,24 @@ nav {
     top: -3px;
 
 }
+
+/* Hus-div */
+
+#houses {
+    display: flex;
+    justify-content: center;
+    align-items: center;      
+}
+
+#houses ul, #houses li {
+    display: inline-block;
+    padding: 20px;
+    list-style-type: none;
+    font-weight: 500;
+    font-size: base.$second-heading-fontsize;
+}
+
+
 
 /* Footer */
 footer {

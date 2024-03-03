@@ -1,12 +1,9 @@
 "use strict";
 
-console.log("Test av Javascript-fil för Harry Potter-API");
-
 // Hämta data från webbtjänst
 
-
-const characterUrl = 'https://hp-api.onrender.com/api/characters';
 const housesURL = 'https://wizard-world-api.herokuapp.com/Houses';
+const characterURL = 'https://hp-api.onrender.com/api/characters';
 
 window.onload = init();
 
@@ -79,12 +76,12 @@ function showHouseInfo(house) {
     const houseInfo = document.getElementById('house-info');
     houseInfo.innerHTML = `
         <h2>${house.name}</h2>
-        <p>Grundare: ${house.founder}</p>
-        <p>Husfärger: ${house.houseColours}</p>
-        <p>Hus-spöke: ${house.ghost}</p>
-        <p>Djur: ${house.animal}</p>
+        <p>Founder: ${house.founder}</p>
+        <p>House Colours: ${house.houseColours}</p>
+        <p>Ghost: ${house.ghost}</p>
+        <p>Animal: ${house.animal}</p>
         <p>Element: ${house.element}</p>
-        <p>Sällskapsrum: ${house.commonRoom}</p>
+        <p>Common Room: ${house.commonRoom}</p>
     `;
 }
 
@@ -92,4 +89,54 @@ function showHouseInfo(house) {
 function hideHouseInfo() {
     const houseInfo = document.getElementById('house-info');
     houseInfo.innerHTML = ''; 
+}
+
+const searchBox = document.getElementById('search-container');
+const searchButton = document.getElementById('search-character-button');
+const characterResult = document.getElementById('character-result');
+
+// Eventlyssnare för klick på sök-knapp
+searchButton.addEventListener('click', findCharacter);
+clear.addEventListener('click', clearCharacterResult);
+
+async function findCharacter() {
+    try {
+        const searchTerm = document.getElementById('searchCharacter').value.trim(); // Hämta sökterm och ta bort eventuella extra mellanslag
+        if (searchTerm !== '') { // Kontrollera om söktermen är tom
+            const response = await fetch(characterURL);
+            let characterData = await response.json();
+
+            // Filtrera karaktärer baserat på söktermen
+            const filteredCharacters = characterData.filter(character => {
+                return character.name.toLowerCase().includes(searchTerm.toLowerCase());
+            });
+
+            // Visa de filtrerade karaktärerna
+            showCharacter(filteredCharacters);
+        } else {
+            // Om söktermen är tom, rensa resultatet
+            clearCharacterResult();
+        }
+
+    } catch (e) {
+        console.log(e);
+        document.getElementById('error').innerHTML = "<p>Problemos</p>";
+    }
+}
+
+function showCharacter(characterData) {
+    const characterResult = document.getElementById('characterResult');
+    characterResult.innerHTML = ''; 
+
+    characterData.forEach(character => {
+        const listItem = document.createElement('li');
+        listItem.textContent = character.name;
+        characterResult.appendChild(listItem);
+    });
+}
+
+// Rensa sökresultat
+function clearCharacterResult() {
+    const characterResult = document.getElementById('characterResult');
+    characterResult.innerHTML = ''; 
 }
