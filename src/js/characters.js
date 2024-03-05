@@ -6,6 +6,8 @@ const searchBox = document.getElementById('search-container');
 const searchButton = document.getElementById('search-character-button');
 const characterResult = document.getElementById('character-result');
 
+let currentCharacter = null;
+
 // Eventlyssnare för knappar
 searchButton.addEventListener('click', findCharacter);
 clear.addEventListener('click', clearCharacterResult);
@@ -36,21 +38,46 @@ async function findCharacter() {
 }
 
 function showCharacter(characterData) {
-    const characterResult = document.getElementById('characterResult');
-    characterResult.innerHTML = ''; 
+    const characterResultEL = document.getElementById('characterResult');
+    characterResultEL.innerHTML = ''; 
 
     characterData.forEach(character => {
         const listItem = document.createElement('li');
         listItem.textContent = character.name;
-        characterResult.appendChild(listItem);
+
+         // Händelsehanterare med klick för att visa eller dölja ett hus
+         listItem.addEventListener('click', () => {
+            // Om samma hus klickas på två gånger - dölj det
+            if (currentCharacter === character) {
+                clearCharacterResult(); // Funktion som kallas på för att dölja hus
+                currentCharacter = null;
+            } else { // Annars visa 
+                showCharacterInfo(character); // Funktion som visar info om hus som klickats på
+                currentCharacter = character;
+            }
+        });
+
+        // Lägg till nytt li-element
+        characterResultEL.appendChild(listItem);
     });
 
      // TA BORT SEN
      console.table(characterData);
 }
 
+function showCharacterInfo(character) {
+    const characterInfo = document.getElementById('character-info');
+    characterInfo.innerHTML = `
+        <h2>${character.name}</h2>
+        <img src="${character.image}" alt="${character.name}">
+        <p>House: ${character.house}</p>
+        <p>Born: ${character.dateOfBirth}</p>
+        <p>Patronus: ${character.patronus}</p>
+    `;
+}
+
 // Rensa sökresultat
 function clearCharacterResult() {
-    const characterResult = document.getElementById('characterResult');
+    const characterResult = document.getElementById('character-info');
     characterResult.innerHTML = ''; 
 }
