@@ -8,6 +8,7 @@
     box-sizing: border-box;
 }
 
+
 body {
    // background-color: base.$bodyBackgroundColor;
     margin: 0;
@@ -16,6 +17,8 @@ body {
     display: flex;
     flex-direction: column;
     background: base.$bodyBackgroundColor;
+
+    cursor: url('../images/wand.png'), auto;
 }
 
 main {
@@ -25,8 +28,6 @@ main {
     background: base.$mainBackgroundColor;
     @include component.custom-box-shadow;
     font-family: base.$primary-fonts;
-
-
 }
 
 
@@ -81,7 +82,7 @@ nav {
 
     a:hover {
         text-decoration: underline;
-        cursor: pointer;
+        cursor: url('../images/wand.png'), auto;
     }
 }
 
@@ -92,7 +93,6 @@ nav {
     padding: 8px 15px;
     background-color: base.$menuColor;
     border: rgb(0, 0, 0) solid 2px;
-    cursor: pointer;
 }
 
 .open {
@@ -163,7 +163,8 @@ nav {
     list-style-type: none;
     font-weight: 500;
     font-size: base.$second-heading-fontsize;
-    cursor: pointer;
+    letter-spacing: 4px;
+    text-transform: uppercase;
 }
 
 #house-info ul, #house-info li {
@@ -174,17 +175,33 @@ nav {
     font-size: base.$menu-fontsize;
     text-align: center;
 }
+ #house-info li {
+    border: 2px solid #eee;
+    border-radius: 12px;
+    padding: 15px;
+    margin: 1%;
+ }
 
 #search-character-button, #clear {
     cursor: pointer;
 }
-
-#character-info img {
+#member-info {
+    width: 80%;
     display: flex;
-    margin-right: auto;
+    flex-direction: column;
     margin-left: auto;
-    border: 2px solid #000;
+    margin-right: auto;
 }
+#member-info img {
+    border: 10px solid #000;
+    border-radius: 12px;
+    width: 300px;
+    height: auto;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 
 
 /* Footer */

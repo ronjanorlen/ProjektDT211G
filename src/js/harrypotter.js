@@ -52,6 +52,10 @@ function displayHouses(houseData) {
                 }
             }
         });
+
+        // Lägg till klassen "characterItem"
+        listItem.classList.add('characterItem');
+
         // Lägg till det nya li-elementet till listan av hus
         houseDataEL.appendChild(listItem);
     });
@@ -69,11 +73,89 @@ function showHouseInfo(house, characterData) {
         <p>Element: ${house.element}</p>
         <p>Common Room: ${house.commonRoom}</p>
 
-        <h3>Members of Gryffindor House:</h3>
-        <ul>
-            ${characterData.map(character => `<li>${character.name}</li>`).join('')}
+        <h3>Members of ${house.name} House:</h3>
+        <ul id="characterList">
+            ${characterData.map(character => `<li class="characterItem">${character.name}</li>`).join('')}
         </ul>
     `;
+
+    // Klick för att visa karaktär
+    const characterItems = document.querySelectorAll('#characterList .characterItem');
+    characterItems.forEach(characterItem => {
+        characterItem.addEventListener('click', () => {
+            showCharacterInfo(characterItem.textContent, characterData);
+        });
+    });
+}
+
+// Visa info om en vald karaktär
+function showCharacterInfo(characterName, characterData) {
+    const character = characterData.find(character => character.name === characterName);
+
+     // Visa i member-info div   
+    const memberInfo = document.getElementById('member-info');
+
+    // Dölj alla andra karaktärer
+    const characterList = document.getElementById('characterList');
+    characterList.innerHTML = '';
+
+
+        // TA BORT INNAN PUBLICERING
+    console.table(characterData);
+
+    // Lagra HTML-koden för karaktärens info
+    let characterInfoHTML = '';
+
+    // Kontrollera varje värde och lägg till det till characterInfoHTML
+    // Hitte-på anledningar för värden som är null eller ''
+    characterInfoHTML += `<h3>${character.name}</h3>`;
+    if (!character || character.image === null || character.image === '') {
+        characterInfoHTML += `<p>Photo has unfortunately been stolen by dementors</p>`; 
+    } else {
+        characterInfoHTML += `<img src="${character.image}" alt="${character.name}">`;
+    }
+    if (!character || character.patronus === null || character.patronus === '') {
+        characterInfoHTML += `<p>Patronus is available for safety reasons</p>`;
+    } else {
+        characterInfoHTML += `<p>Patronus: ${character.patronus}</p>`;
+    }
+    if (!character || character.dateOfBirth === null || character.dateOfBirth === '') {
+        characterInfoHTML += `<p>Date of birth is unknown</p>`;
+    } else {
+        characterInfoHTML += `<p>Born: 
+        ${character.dateOfBirth}</p>`;
+    }
+   
+
+    // Lägg till info till characterCard
+    memberInfo.innerHTML = characterInfoHTML;
+
+    // Dölj kortet vid klick
+    memberInfo.addEventListener('click', () => {
+
+        // Funktion som kallas på för att visa alla karaktärer igen
+        showAllCharacters(characterData);
+    });
+
+}
+
+
+// Visa alla karaktärer i huset igen
+function showAllCharacters(characterData) {
+    const characterList = document.getElementById('characterList');
+    characterList.innerHTML = '';
+
+    characterData.forEach(character => {
+        const listItem = document.createElement('li');
+        listItem.textContent = character.name;
+        listItem.classList.add('characterItem');
+
+        listItem.addEventListener('click', () => {
+            showCharacterInfo(character.name, characterData);
+        });
+
+        characterList.appendChild(listItem);
+    });
 }
 
 // Dölj hus

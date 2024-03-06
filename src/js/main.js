@@ -24,3 +24,4 @@ console.log("Test av JavaScript");
     //    navMenuEl.style.display = "none";
    // }
 //}
+
