@@ -3,6 +3,7 @@
 // Hämta data från webbtjänst
 
 const housesURL = 'https://wizard-world-api.herokuapp.com/Houses';
+const characterBaseURL = 'https://hp-api.onrender.com/api/characters/house/';
 
 window.onload = init();
 
@@ -28,29 +29,36 @@ async function init() {
 function displayHouses(houseData) {
     const houseDataEL = document.getElementById('houses');
 
+    // Skapa nytt li-element för varje hus
     houseData.forEach((house) => {
-        // Skapa ett nytt li-element för varje hus
         const listItem = document.createElement('li');
         listItem.textContent = house.name;
 
-        // Händelsehanterare med klick för att visa eller dölja ett hus
-        listItem.addEventListener('click', () => {
-            // Om samma hus klickas på två gånger - dölj det
+        // Om samma hus klickas på två gånger, dölj det.
+        // Visa de karaktärer som finns i det huset som klickats på
+        listItem.addEventListener('click', async () => {
             if (currentHouse === house) {
                 hideHouseInfo(); // Funktion som kallas på för att dölja hus
                 currentHouse = null;
-            } else { // Annars visa 
-                showHouseInfo(house); // Funktion som visar info om hus som klickats på
-                currentHouse = house;
+            } else {
+                try {
+                    const characterResponse = await fetch(characterBaseURL + house.name);
+                    const characterData = await characterResponse.json();
+                    showHouseInfo(house, characterData); // Funktion som visar hus + karaktärer 
+                    currentHouse = house;
+                } catch (error) {
+                    console.log(error);
+                    document.getElementById('error').innerHTML = "<p>Problem med att hämta karaktärer för detta hus</p>";
+                }
             }
         });
-
         // Lägg till det nya li-elementet till listan av hus
         houseDataEL.appendChild(listItem);
     });
 }
 
-function showHouseInfo(house) {
+// Visa info om hus + karaktärer i huset
+function showHouseInfo(house, characterData) {
     const houseInfo = document.getElementById('house-info');
     houseInfo.innerHTML = `
         <h2>${house.name}</h2>
@@ -60,6 +68,11 @@ function showHouseInfo(house) {
         <p>Animal: ${house.animal}</p>
         <p>Element: ${house.element}</p>
         <p>Common Room: ${house.commonRoom}</p>
+
+        <h3>Characters:</h3>
+        <ul>
+            ${characterData.map(character => `<li>${character.name}</li>`).join('')}
+        </ul>
     `;
 }
 

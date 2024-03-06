@@ -45,14 +45,14 @@ function showCharacter(characterData) {
         const listItem = document.createElement('li');
         listItem.textContent = character.name;
 
-         // Händelsehanterare med klick för att visa eller dölja ett hus
+         // Händelsehanterare med klick för att visa eller dölja sökresultat på karaktärer
          listItem.addEventListener('click', () => {
-            // Om samma hus klickas på två gånger - dölj det
+            // Om samma karaktär klickas på två gånger - dölj från lista
             if (currentCharacter === character) {
-                clearCharacterResult(); // Funktion som kallas på för att dölja hus
+                clearCharacterResult(); // Funktion som kallas på för att dölja karaktär
                 currentCharacter = null;
             } else { // Annars visa 
-                showCharacterInfo(character); // Funktion som visar info om hus som klickats på
+                showCharacterInfo(character); // Funktion som visar info om karaktär som klickats på
                 currentCharacter = character;
             }
         });
