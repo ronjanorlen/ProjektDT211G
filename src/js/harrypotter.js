@@ -69,7 +69,7 @@ function showHouseInfo(house, characterData) {
         <p>Element: ${house.element}</p>
         <p>Common Room: ${house.commonRoom}</p>
 
-        <h3>Characters:</h3>
+        <h3>Members of Gryffindor House:</h3>
         <ul>
             ${characterData.map(character => `<li>${character.name}</li>`).join('')}
         </ul>

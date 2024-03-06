@@ -25,6 +25,8 @@ main {
     background: base.$mainBackgroundColor;
     @include component.custom-box-shadow;
     font-family: base.$primary-fonts;
+
+
 }
 
 
@@ -162,6 +164,15 @@ nav {
     font-weight: 500;
     font-size: base.$second-heading-fontsize;
     cursor: pointer;
+}
+
+#house-info ul, #house-info li {
+    display: inline-block;
+    padding: 20px;
+    list-style-type: none;
+    font-weight: 500;
+    font-size: base.$menu-fontsize;
+    text-align: center;
 }
 
 #search-character-button, #clear {
