@@ -8,22 +8,23 @@
     box-sizing: border-box;
 }
 
+
 body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background: base.$footerColor;
-
+    background-image: url('../images/hoqwartsbackground.jpg'); 
+    background-size: cover; /* Så att bilden täcker hela bakgrunden */
+    background-repeat: no-repeat; /* För att undvika att bakgrundsbilden upprepas */
     cursor: url('../images/wand.png'), auto;
 }
 
 main {
-    width: 70%;
+    width: 80%;
     margin: 10px auto;
     min-height: 100vh;
-    background: base.$footerColor;
     font-family: base.$primary-fonts;
 }
 

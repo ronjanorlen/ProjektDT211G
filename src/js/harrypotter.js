@@ -77,7 +77,7 @@ function showHouseInfo(house, characterData) {
     <p><span class="heading">Element:</span> ${house.element}</p>
     <p><span class="heading">Common Room:</span> ${house.commonRoom}</p>
 
-        <h3>Members of ${house.name} House:</h3>
+        <h3>Members of ${house.name} House</h3>
         <ul id="characterList">
             ${characterData.map(character => `<li class="characterItem">${character.name}</li>`).join('')}
         </ul>

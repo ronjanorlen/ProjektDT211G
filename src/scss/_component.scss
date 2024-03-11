@@ -11,16 +11,14 @@ h2 {
     font-size: base.$second-heading-fontsize;
     color: base.$font-color;
     background-color: base.$primary-color; 
-    margin: 0 auto;
-    padding: 5px 10px; 
-    width: fit-content; /* Anpassa bredden efter innehållet */
+    margin: 20px auto;
+    padding: 15px 10px; 
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 h3 {
   font-size: base.$third-heading-fontsize;
   color: base.$second-font-color;
-  width: fit-content; /* Anpassa bredden efter innehållet */
   margin: 0 auto;
   background-color: base.$primary-color; 
   padding: 5px 10px; 
@@ -30,8 +28,6 @@ h3 {
 h1, h2, h3 {
     text-align: center;
     font-weight: 500;
-    padding-left: 8%;
-    padding-right: 8%;
 }
 
 p {
@@ -61,33 +57,42 @@ p {
   font-size: base.$heading-fontsize;
   letter-spacing: 2px;
   text-transform: uppercase;
-  width:80%; 
 }
 
-/* Styla hus-namnen i olika färger */
+/* Styla hus-namnen i olika färger och efterlikna "slitna skyltar" */
 .gryffindor {
   color: base.$Gryffindor-red;
   text-shadow: 2px 2px 5px base.$Gryffindor-dark-red;
+  background: base.$footerColor;
+  box-shadow: inset 0 -4px 8px rgba(0, 0, 0, 0.2), inset 0 6px 20px rgba(0, 0, 0, 0.19);
 }
 
 .slytherin {
   color: base.$Slytherin-green;
   text-shadow: 2px 2px 5px base.$Slytherin-dark-green;
+  background: base.$footerColor;
+  box-shadow: inset 0 -4px 8px rgba(0, 0, 0, 0.2), inset 0 6px 20px rgba(0, 0, 0, 0.19);
 }
 
 .hufflepuff {
   color: base.$Hufflepuff-yellow;
   text-shadow: 2px 2px 5px base.$Hufflepuff-dark-yellow;
+  background: base.$footerColor;
+  box-shadow: inset 0 -4px 8px rgba(0, 0, 0, 0.2), inset 0 6px 20px rgba(0, 0, 0, 0.19);
 }
 
 .ravenclaw {
   color: base.$Ravenclaw-blue;
   text-shadow: 2px 2px 5px base.$Ravenclaw-dark-blue;
+  background: base.$footerColor;
+  box-shadow: inset 0 -4px 8px rgba(0, 0, 0, 0.2), inset 0 6px 20px rgba(0, 0, 0, 0.19);
 }
 
 #house-info {
   text-align: center;
+  background-color: base.$menuColor;
 }
+
 
 #house-info ul,
 #house-info li {
@@ -98,7 +103,6 @@ p {
   font-size: base.$paragraph-fontsize;
   text-align: center; 
 }
-
 
 #characterList .characterItem {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
