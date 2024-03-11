@@ -19,3 +19,21 @@
         transform: translate(0px, -20px); 
     }
   }
+
+  @keyframes character-hover {
+    from {
+        transform: scale(1, 1);
+    }
+    to {
+        transform: scale(1.2, 1.2); 
+    }
+  }
+
+  @keyframes member-name {
+    from {
+        transform: scale(1, 1); 
+    }
+    to {
+        transform: scale(1.1, 1.1); 
+    }
+}
