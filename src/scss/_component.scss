@@ -5,6 +5,10 @@
 h1 {
     font-size: base.$welcome-text;
     color: base.$font-color;
+    animation-name: shadow;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
 }
 
 h2 {
@@ -35,6 +39,7 @@ p {
   margin: 1%;
   font-size: base.$paragraph-fontsize;
   text-align: center;
+  font-family: base.$secondary-fonts;
 }
 
 .heading {
@@ -42,24 +47,30 @@ p {
 }
 
 /* Hus-div */
-#houses {
+#houses ul {
   display: flex;
   justify-content: center;
-  align-items: center;     
   padding: 2%;
 }
 
-#houses ul, #houses li {
+#houses li {
   display: inline-block;
-  padding: 1%;
+  margin: 4px;
+  padding: 10px;
   list-style-type: none;
   font-weight: 600;
   font-size: base.$heading-fontsize;
   letter-spacing: 2px;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
-/* Styla hus-namnen i olika färger och efterlikna "slitna skyltar" */
+#houses li:hover {
+  animation-name: house-hover;
+  animation-duration: 1s
+}
+
+/* Styla hus-namnen i houses-div och efterlikna "slitna skyltar" */
 .gryffindor {
   color: base.$Gryffindor-red;
   text-shadow: 2px 2px 5px base.$Gryffindor-dark-red;
@@ -104,9 +115,31 @@ p {
   text-align: center; 
 }
 
+// Styla hus-namn i house-info div
+.house-name.gryffindor {
+  color: base.$font-color;
+  background: linear-gradient(to right, base.$Gryffindor-dark-red, base.$Gryffindor-red, base.$Gryffindor-yellow, base.$Gryffindor-gold); 
+}
+
+.house-name.slytherin {
+  color: base.$font-color;
+  background: linear-gradient(to right, base.$Slytherin-dark-green, base.$Slytherin-green, base.$Slytherin-dark-silver, base.$Slytherin-light-silver); 
+}
+
+.house-name.hufflepuff {
+  color: base.$font-color;
+  background: linear-gradient(to right, base.$Hufflepuff-dark-yellow, base.$Hufflepuff-yellow, base.$Hufflepuff-light-brown, base.$Hufflepuff-dark-brown);
+}
+
+.house-name.ravenclaw {
+  color: base.$font-color;
+  background: linear-gradient(to right, base.$Ravenclaw-dark-blue, base.$Ravenclaw-blue, base.$Ravenclaw-grey, base.$Ravenclaw-gold); 
+}
+
 #characterList .characterItem {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin: 10px;
+  font-family: base.$secondary-fonts;
 }
 
 #search-character-button, #clear {

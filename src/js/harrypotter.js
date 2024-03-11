@@ -30,7 +30,10 @@ async function init() {
 function displayHouses(houseData) {
     const houseDataEL = document.getElementById('houses');
 
-    // Skapa nytt li-element för varje hus
+    // Skapa en ny ul-element
+    const ul = document.createElement('ul');
+
+    // Skapa nya li-element för varje hus och lägg till dem i ul-elementet
     houseData.forEach((house) => {
         const listItem = document.createElement('li');
         listItem.textContent = house.name;
@@ -50,6 +53,10 @@ function displayHouses(houseData) {
                     const characterData = await characterResponse.json();
                     showHouseInfo(house, characterData); // Funktion som visar hus + karaktärer 
                     currentHouse = house;
+                    
+                    // Nollställ karaktärsinformationen när du klickar på ett nytt hus
+                    const memberInfo = document.getElementById('member-info');
+                    memberInfo.innerHTML = '';
                 } catch (error) {
                     console.log(error);
                     document.getElementById('error').innerHTML = "<p>Problem med att hämta karaktärer för detta hus</p>";
@@ -60,16 +67,19 @@ function displayHouses(houseData) {
         // Lägg till klassen "characterItem"
         listItem.classList.add('characterItem');
 
-        // Lägg till det nya li-elementet till listan av hus
-        houseDataEL.appendChild(listItem);
+        // Lägg till det nya li-elementet till ul-listan
+        ul.appendChild(listItem);
     });
+
+    // Lägg till ul-listan till #houses-elementet
+    houseDataEL.appendChild(ul);
 }
 
 // Visa info om hus + karaktärer i huset
 function showHouseInfo(house, characterData) {
     const houseInfo = document.getElementById('house-info');
     houseInfo.innerHTML = `
-        <h2>${house.name}</h2>
+    <h2 class="house-name ${house.name.toLowerCase()}">${house.name}</h2>
         <p><span class="heading">Founder:</span> ${house.founder}</p>
         <p><span class="heading">House Colours:</span> ${house.houseColours}</p>
     <p><span class="heading">Ghost:</span> ${house.ghost}</p>
@@ -77,7 +87,7 @@ function showHouseInfo(house, characterData) {
     <p><span class="heading">Element:</span> ${house.element}</p>
     <p><span class="heading">Common Room:</span> ${house.commonRoom}</p>
 
-        <h3>Members of ${house.name} House</h3>
+        <h3 class="house-name ${house.name.toLowerCase()}">Members of ${house.name} House</h3>
         <ul id="characterList">
             ${characterData.map(character => `<li class="characterItem">${character.name}</li>`).join('')}
         </ul>
@@ -116,7 +126,7 @@ function showCharacterInfo(characterName, characterData) {
         characterInfoHTML += `<img src="${character.image}" alt="${character.name}">`;
     }
     if (!character || character.patronus === null || character.patronus === '') {
-        characterInfoHTML += `<p>Patronus is available for safety reasons</p>`;
+        characterInfoHTML += `<p>Patronus is not available for safety reasons</p>`;
     } else {
         characterInfoHTML += `<p>Patronus: ${character.patronus}</p>`;
     }
@@ -146,6 +156,10 @@ function showAllCharacters(characterData) {
     const characterList = document.getElementById('characterList');
     characterList.innerHTML = '';
 
+    // Återställ member-info
+    const memberInfo = document.getElementById('member-info');
+    memberInfo.innerHTML = '';
+
     characterData.forEach(character => {
         const listItem = document.createElement('li');
         listItem.textContent = character.name;
@@ -159,9 +173,12 @@ function showAllCharacters(characterData) {
     });
 }
 
-// Dölj hus
+// Dölj hus och karaktär
 function hideHouseInfo() {
     const houseInfo = document.getElementById('house-info');
     houseInfo.innerHTML = ''; 
+
+    const memberInfo = document.getElementById('member-info');
+    memberInfo.innerHTML = '';
 }
 
