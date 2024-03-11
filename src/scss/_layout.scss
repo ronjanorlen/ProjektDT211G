@@ -16,17 +16,16 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background: base.$bodyBackgroundColor;
+    background: base.$footerColor;
 
     cursor: url('../images/wand.png'), auto;
 }
 
 main {
     width: 80%;
-    margin: 3px auto;
+    margin: 10px auto;
     min-height: 100vh;
-    background: base.$mainBackgroundColor;
-    @include component.custom-box-shadow;
+    background: base.$footerColor;
     font-family: base.$primary-fonts;
 }
 
@@ -147,59 +146,6 @@ nav {
     position: relative;
     top: -3px;
 
-}
-
-/* Hus-div */
-
-#houses {
-    display: flex;
-    justify-content: center;
-    align-items: center;      
-}
-
-#houses ul, #houses li {
-    display: inline-block;
-    padding: 20px;
-    list-style-type: none;
-    font-weight: 500;
-    font-size: base.$second-heading-fontsize;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-}
-
-#house-info ul, #house-info li {
-    display: inline-block;
-    padding: 20px;
-    list-style-type: none;
-    font-weight: 500;
-    font-size: base.$menu-fontsize;
-    text-align: center;
-}
- #house-info li {
-    border: 2px solid #eee;
-    border-radius: 12px;
-    padding: 15px;
-    margin: 1%;
- }
-
-#search-character-button, #clear {
-    cursor: pointer;
-}
-#member-info {
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    margin-left: auto;
-    margin-right: auto;
-}
-#member-info img {
-    border: 10px solid #000;
-    border-radius: 12px;
-    width: 300px;
-    height: auto;
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 

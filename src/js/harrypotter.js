@@ -9,6 +9,7 @@ window.onload = init();
 
 let currentHouse = null; // För att kunna visa/dölja husen
 
+
 // Hämta de 4 husen
 async function init() {
     try {
@@ -33,6 +34,9 @@ function displayHouses(houseData) {
     houseData.forEach((house) => {
         const listItem = document.createElement('li');
         listItem.textContent = house.name;
+
+        // Lägg till klass på list-element för att kunna styla i css
+        listItem.classList.add(house.name.toLowerCase()); 
 
         // Om samma hus klickas på två gånger, dölj det.
         // Visa de karaktärer som finns i det huset som klickats på
@@ -66,12 +70,12 @@ function showHouseInfo(house, characterData) {
     const houseInfo = document.getElementById('house-info');
     houseInfo.innerHTML = `
         <h2>${house.name}</h2>
-        <p>Founder: ${house.founder}</p>
-        <p>House Colours: ${house.houseColours}</p>
-        <p>Ghost: ${house.ghost}</p>
-        <p>Animal: ${house.animal}</p>
-        <p>Element: ${house.element}</p>
-        <p>Common Room: ${house.commonRoom}</p>
+        <p><span class="heading">Founder:</span> ${house.founder}</p>
+        <p><span class="heading">House Colours:</span> ${house.houseColours}</p>
+    <p><span class="heading">Ghost:</span> ${house.ghost}</p>
+    <p><span class="heading">Animal:</span> ${house.animal}</p>
+    <p><span class="heading">Element:</span> ${house.element}</p>
+    <p><span class="heading">Common Room:</span> ${house.commonRoom}</p>
 
         <h3>Members of ${house.name} House:</h3>
         <ul id="characterList">
@@ -99,9 +103,6 @@ function showCharacterInfo(characterName, characterData) {
     const characterList = document.getElementById('characterList');
     characterList.innerHTML = '';
 
-
-        // TA BORT INNAN PUBLICERING
-    console.table(characterData);
 
     // Lagra HTML-koden för karaktärens info
     let characterInfoHTML = '';
