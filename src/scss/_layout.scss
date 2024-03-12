@@ -14,7 +14,7 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background-image: url('../images/spell-library.jpg'); 
+    background-image: url('../images/spell-library.jpg?as=webp&width=1800'); 
     background-size: contain; /* Visa hela bakgrundsbilden inom bodyn */
     background-repeat: repeat-y; /* Upprepa bakgrundsbilden längs sidans höjd */
     cursor: url('../images/wand.png'), auto; /* Trollstav som muspekare */
@@ -26,7 +26,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background-image: url('../images/hoqwartsbackground.jpg'); 
+    background-image: url('../images/hoqwartsbackground.jpg?as=webp&width=1800'); 
     background-size: cover; /* Så att bilden täcker hela bakgrunden */
     background-repeat: no-repeat; /* Upprepa inte bakgrundsbilden */
     cursor: url('../images/wand.png'), auto; /* Trollstav som muspekare */
@@ -330,9 +330,6 @@ p {
     animation-duration: 1s;
   }
   
-  #search-character-button, #clear {
-    cursor: pointer;
-  }
   
   /* Karaktär-info-div */
   #member-info {
@@ -375,9 +372,18 @@ p {
 }
 
 .spellItem {
-    width: calc(33.33% - 20px); /* Bredden på varje spellItem, minus marginal */
-    margin-bottom: 20px; /* Avstånd mellan spellItems */
+    width: calc(33.33% - 20px); 
+    margin-bottom: 20px; 
     border: 1px solid #000;
+    border-radius: 18px;
+    background-color: rgba(63, 62, 62, 0.8);
+    color: base.$font-color;
+    @include component.box-shadow;
+    animation: spellRotate 5s linear infinite alternate;
+}
+
+.spellItem p {
+    color: base.$font-color;
 }
 
   .spellItem h4 {
