@@ -42,6 +42,24 @@
     margin-right: auto;
 }
 
+/* mixin för knappar */
+@mixin buttons {
+  padding: 10px 20px;
+  background-color: base.$Ravenclaw-dark-blue;
+  border: 2px solid base.$Ravenclaw-blue;
+  margin-right: 10px;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+@mixin button-hover {
+  background-color: base.$Ravenclaw-blue;
+}
+
+
 
 
 

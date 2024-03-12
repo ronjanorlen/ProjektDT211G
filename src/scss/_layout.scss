@@ -11,11 +11,11 @@
 .spellLibrary {
     margin: 0;
     padding: 0;
-    min-height: 100vh;
+    max-height: 100vh;
     display: flex;
     flex-direction: column;
     background-image: url('../images/spell-library.jpg?as=webp&width=1800'); 
-    background-size: contain; /* Visa hela bakgrundsbilden inom bodyn */
+    background-size: cover; /* Visa hela bakgrundsbilden inom bodyn */
     background-repeat: repeat-y; /* Upprepa bakgrundsbilden längs sidans höjd */
     cursor: url('../images/wand.png'), auto; /* Trollstav som muspekare */
 }
@@ -39,9 +39,18 @@ main {
     font-family: base.$primary-fonts;
 }
 
+#main-page {
+  width: 60%;
+  background-color: rgba(194, 194, 194, 0.65);
+  @include component.box-shadow;
+  margin: 0 auto;
+  border-radius: 18px;
+}
+
 #main-page a {
     font-size: base.$second-heading-fontsize;
     text-decoration: none;
+    color: base.$Slytherin-dark-silver;
 }
 
 /* Design av huvudmeny med nestlad regel */
@@ -112,7 +121,7 @@ nav {
 }
 
 .menu-btn:hover {
-    background-color: base.$menuHoverColor;
+    background-color: base.$member-info-border;;
     box-shadow: 0 0px 5px rgba(0, 0, 0, 0.421);
 }
 
@@ -361,7 +370,7 @@ p {
   }
   
   #member-info img {
-    border: 10px solid base.$menuHoverColor;
+    border: 10px solid base.$member-info-border;
     border-radius: 12px;
     width: 300px;
     height: auto;
@@ -370,7 +379,36 @@ p {
   }
 
 
-  /* Trollformel-div */
+  /* Trollformel-sida */
+  #yes-no {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2%;
+    background-color: rgba(121, 119, 119, 0.7);
+    border-radius: 15px;
+  }
+#spells h4 {
+  background-color: rgba(121, 119, 119, 0.7);
+  text-align: center;
+  font-size: base.$paragraph-fontsize;
+  color: base.$Ravenclaw-dark-blue;
+  border-radius: 10px;
+  padding: 2%;
+}
+  #yes-btn, #no-btn {
+    @include component.buttons;
+    margin-bottom: 2%;
+    animation-name: member-name;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+  }
+  
+  #yes-btn:hover, #no-btn:hover {
+    @include component.button-hover;
+  }
 
 #spellContainer {
     display: flex;
@@ -422,20 +460,12 @@ p {
   width: 200px;
 }
 
-#search-character-button, #clear {
-  padding: 10px 20px;
-  background-color: base.$Ravenclaw-dark-blue;
-  border: 2px solid base.$Ravenclaw-blue;
-  margin-right: 10px;
-  border-radius: 5px;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+#search-character-button, #clear, #yes-btn, #no-btn {
+  @include component.buttons;
 }
 
-#search-character-button:hover, #clear:hover {
-  background-color: base.$Ravenclaw-blue;
+#search-character-button:hover, #clear:hover, #yes-btn:hover, #no-btn:hover {
+  @include component.button-hover;
 }
 
 #character-info {
@@ -448,7 +478,7 @@ p {
 }
 
 #character-info img {
-  border: 10px solid base.$menuHoverColor;
+  border: 10px solid base.$member-info-border;;
   border-radius: 12px;
   width: 300px;
   height: auto;
@@ -459,6 +489,8 @@ p {
     animation-iteration-count: infinite;
     animation-direction: alternate-reverse;
 }
+
+
 /* Footer */
 footer {
     background-color: base.$houseName;

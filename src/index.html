@@ -1,17 +1,25 @@
 <!DOCTYPE html>
 <html lang="sv">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Start</title>
+    <title>Home</title>
+    <!-- Länk till scss-fil -->
     <link rel="stylesheet" href="scss/main.scss">
+    <!-- Länk till google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Yusei+Magic&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Yusei+Magic&display=swap"
+        rel="stylesheet">
+    <!-- Javascript -->
     <script src="js/main.js" type="module"></script>
     <script src="js/harrypotter.js" type="module"></script>
+    <!-- Fontawesome -->
     <script src="https://kit.fontawesome.com/41ba6d6515.js" crossorigin="anonymous"></script>
-</head> 
+</head>
+
 <body>
     <header>
         <div class="logo"><a href="index.html"><img src="#" alt="Logotyp"></a></div>
@@ -36,37 +44,42 @@
             </button>
             <ul>
                 <li><a href="index.html">Hem</a></li>
-                
+
             </ul>
         </nav>
-        
+
     </header>
     <main>
         <div class="cursor"></div>
-        
-        <h1>Welcome to the Harry Potter world!</h1>
 
+        <h1>Welcome to Hogwarts!</h1>
+
+        <!-- Ruta för navigering -->
         <div id="main-page">
 
-            
-        <p>Enter the<br> <a href="spells.html"><i class="fa-solid fa-wand-magic-sparkles"></i> Spell Library</a>
-        <br>
-    Find you favorite  <br><a href="characters.html">character</a>  </p> 
-    
-    <h2>Choose a house</h2>
-</div>
-        
+
+            <p>Explore <a href="spells.html">The library</a>
+                <br>
+                Find you favorite <a href="characters.html">Character</a>
+                <br>Or
+                <br>Choose a house below and learn more about them!
+            </p>
+
+        </div>
+        <!-- Visar de fyra husen-->
         <div id="houses">
         </div>
-
-        <div id="house-info"> 
+        <!-- Visar information om husen-->
+        <div id="house-info">
         </div>
+        <!-- Visar information om medlemer i husen-->
         <div id="member-info"></div>
-
+        <!-- Om eventuellt felmeddelande -->
         <div id="error"></div>
-        
+
     </main>
 
-    
+
 </body>
+
 </html>

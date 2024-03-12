@@ -1,17 +1,25 @@
 <!DOCTYPE html>
 <html lang="sv">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Start</title>
+    <title>Characters</title>
+    <!-- Länk till scss-fil-->
     <link rel="stylesheet" href="scss/main.scss">
+    <!-- Länk till google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Yusei+Magic&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Yusei+Magic&display=swap"
+        rel="stylesheet">
+    <!-- Javascript-filer -->
     <script src="js/main.js" type="module"></script>
     <script src="js/characters.js" type="module"></script>
+    <!-- Fontawesome -->
     <script src="https://kit.fontawesome.com/41ba6d6515.js" crossorigin="anonymous"></script>
-</head> 
+</head>
+
 <body>
     <header>
         <div class="logo"><a href="index.html"><img src="#" alt="Logotyp"></a></div>
@@ -36,29 +44,33 @@
             </button>
             <ul>
                 <li><a href="index.html">Hem</a></li>
-                
+
             </ul>
         </nav>
-        
+
     </header>
     <main>
         <div class="cursor"></div>
-        
-        <h1>Characters</h1>
 
+        <h1>Encounter the characters</h1>
+
+        <!-- Container för att söka efter karaktär -->
         <div id="search-container">
             <input type="text" id="searchCharacter" placeholder="Find a character">
             <button id="search-character-button">Search</button>
             <button id="clear">Clear</button>
         </div>
 
-        
-        
+
+        <!-- Visar information om karaktären -->
         <div id="character-info"></div>
+
+        <!-- Om eventuellt felmeddelande -->
         <div id="error"></div>
-        
+
     </main>
 
-    
+
 </body>
+
 </html>

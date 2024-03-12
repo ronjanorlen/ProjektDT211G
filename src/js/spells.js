@@ -3,62 +3,72 @@
 const spellURL = 'https://wizard-world-api.herokuapp.com/Spells';
 let spellData; 
 
-window.onload = init();
+window.onload = init;
 
+function init() {
 
-// Hämta trollformler
-async function init() {
+    // Ladda in knappar först
+    const yesBtn = document.getElementById('yes-btn');
+    const noBtn = document.getElementById('no-btn');
+
+    yesBtn.addEventListener('click', showSpells);
+    noBtn.addEventListener('click', showNoSpellsMessage);
+}
+
+// Om klickat på ja - hämta data från API
+async function showSpells() {
     try {
-        const response = await fetch (spellURL);
-        spellData = await response.json(); 
-
-        // TA BORT INNAN PUBLICERING
-        console.table(spellData);
+        const response = await fetch(spellURL);
+        const spellData = await response.json();
 
         // Ta med data till ny funktion
         displaySpells(spellData);
 
+        // Om fel uppstår
     } catch (e) {
-        console.log(e)
+        console.log(e);
         document.getElementById('error').innerHTML = "<p>Problemos</p>";
-        
     }
 }
 
-// Visa trollformler med trollformelnamn + vad den gör
+// Om klickat på nej - visa inga trollformler, bara meddelande
+function showNoSpellsMessage() {
+    const spellDataEL = document.getElementById('spells');
+    spellDataEL.innerHTML = "<h4>Sorry, we only manage mischief in here..</h4>";
+}
+
+
+// Visa trollformler
 function displaySpells(spellData) {
     const spellDataEL = document.getElementById('spells');
+    spellDataEL.innerHTML = ''; // Rensa innehållet
 
-    // Skapa en div för att hålla trollformlerna
+    // Skapa div för trollforlmer
     const spellContainer = document.createElement('div');
     spellContainer.id = 'spellContainer';
-    
-    // Loopa igenom varje trollformel i spellData
-    spellData.forEach((spell) => {
-        // Kontrollera att incantation och effect är definierade
+
+    // Loopa igenom och ta med trollformel + effekt
+    spellData.forEach(spell => {
         if (spell.incantation && spell.effect) {
-            // Skapa en h4 för incantation
+
+            // Skapa h3 för trollformel-namn
             const incantationHeader = document.createElement('h3');
-            incantationHeader.textContent = ` ${spell.incantation}`;
-            
-            // Skapa <p> för effect
+            incantationHeader.textContent = spell.incantation;
+
+            // Skapa p för effekt
             const effectParagraph = document.createElement('p');
-            effectParagraph.textContent = ` ${spell.effect}`;
-            
-            // Skapa en container för varje trollformel
+            effectParagraph.textContent = spell.effect;
+
+            // Lägg allt i en div och slå ihop
             const spellItem = document.createElement('div');
             spellItem.classList.add('spellItem');
 
-            // Lägg till incantation och effect till spellItem
             spellItem.appendChild(incantationHeader);
             spellItem.appendChild(effectParagraph);
-            
-            // Lägg till spellItem till spellContainer
+
             spellContainer.appendChild(spellItem);
         }
     });
 
-    // Lägg till spellContainer till spellDataEL
     spellDataEL.appendChild(spellContainer);
 }
-

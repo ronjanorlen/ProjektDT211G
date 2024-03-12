@@ -1,27 +1,18 @@
 /* Variabler, färgkoder, fontstyling */
 
-// <uniquifier>: Use a uniquifier for the class name
-// <weight>: Use a value from 400 to 900
-
-// Muspekare - trollstav
-
 $font-stack: Helvetica, sans-serif;
 
 /* Variabler för färger */
-$primary-color: #5d5d5d;
-$bodyBackgroundColor: darken($primary-color, 10%);
-$mainBackgroundColor: lighten($primary-color, 80%);
-$menuColor: lighten($primary-color, 2%);
-
+$primary-color: #5d5d5d; 
+$menuColor: lighten($primary-color, 2%); // används i nav och header
 $houseName: lighten($primary-color, 10%); // Husnamn start-sida
-
-$menuHoverColor: darken($primary-color, 25%);
-$primary-link-hover: darken($primary-color, 20%);
+$member-info-border: darken($primary-color, 25%);
 
 // Färg för text i house-info
 $primary-heading-color: #e7e0d8;
 $house-info-heading: darken($primary-heading-color, 10%);
 $house-info-paragraph: lighten($primary-heading-color, 2%);
+
 /* Mörkt tema */
 // $primary-color-dark: #73a2e0;
 // $bodyBackgroundColor-dark: #ecf1f3;

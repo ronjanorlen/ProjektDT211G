@@ -10,22 +10,6 @@ const characterInfo = document.getElementById('character-info');
 searchButton.addEventListener('click', findCharacter);
 clear.addEventListener('click', clearCharacterResult);
 
-window.onload = init;
-
-
-async function init() {
-    try {
-        const response = await fetch(characterURL);
-        let characterData = await response.json();
-        
-        // TA BORT SEN
-        console.table(characterData);
-        
-    } catch (e) {
-        console.log(e);
-        document.getElementById('error').innerHTML = "<p>Problemos</p>";
-    }
-}
 
 async function findCharacter() {
     try {
