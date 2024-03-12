@@ -6,13 +6,13 @@
     <title>Start</title>
     <link rel="stylesheet" href="scss/main.scss">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Yusei+Magic&display=swap" rel="stylesheet">
-    
-    <script src="js/spells.js" type="module"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Yusei+Magic&display=swap" rel="stylesheet">
+    <script src="js/main.js" type="module"></script>
+    <script src="js/characters.js" type="module"></script>
     <script src="https://kit.fontawesome.com/41ba6d6515.js" crossorigin="anonymous"></script>
 </head> 
-<body class="spellLibrary">
+<body>
     <header>
         <div class="logo"><a href="index.html"><img src="#" alt="Logotyp"></a></div>
         <!-- Meny knapp för att öppna mobilmenyn-->
@@ -42,15 +42,19 @@
         
     </header>
     <main>
+        <div class="cursor"></div>
         
-        <h1>Spell library</h1>
-        <p>What spell do you need today? </p>
+        <h1>Karaktärer</h1>
+
+        <div id="search-container">
+            <input type="text" id="searchCharacter" placeholder="Sök efter karaktärer">
+            <button id="search-character-button">Sök</button>
+            <button id="clear">Clear</button>
+        </div>
+
         
-
-    <div id="spells"></div>
-    
-
-   
+        
+        <div id="character-info"></div>
         <div id="error"></div>
         
     </main>

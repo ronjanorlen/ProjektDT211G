@@ -4,13 +4,37 @@ const characterURL = 'https://hp-api.onrender.com/api/characters';
 
 const searchBox = document.getElementById('search-container');
 const searchButton = document.getElementById('search-character-button');
-const characterResult = document.getElementById('character-result');
+const characterInfo = document.getElementById('character-info');
 
 let currentCharacter = null;
 
 // Eventlyssnare för knappar
 searchButton.addEventListener('click', findCharacter);
 clear.addEventListener('click', clearCharacterResult);
+
+window.onload = init();
+
+
+async function init() {
+    try {
+        const response = await fetch (characterURL);
+        let characterData = await response.json();
+
+        clearCharacterResult(); // Rensa eventuell tidigare sökning
+
+        // TA BORT SEN
+     console.table(characterData);
+     
+
+        // Ta med data till ny funktion
+        showCharacterInfo(characterData);
+
+    } catch (e) {
+        console.log(e)
+        document.getElementById('error').innerHTML = "<p>Problemos</p>";
+        
+    }
+}
 
 async function findCharacter() {
     try {
@@ -25,7 +49,7 @@ async function findCharacter() {
             });
 
             // Ta med data och visa resultat
-            showCharacter(filteredCharacters);
+            showCharacterInfo(filteredCharacters);
         } else {
             // Om söktermen är tom, rensa resultatet
             clearCharacterResult();
@@ -37,47 +61,26 @@ async function findCharacter() {
     }
 }
 
-function showCharacter(characterData) {
-    const characterResultEL = document.getElementById('characterResult');
-    characterResultEL.innerHTML = ''; 
-
-    characterData.forEach(character => {
-        const listItem = document.createElement('li');
-        listItem.textContent = character.name;
-
-         // Händelsehanterare med klick för att visa eller dölja sökresultat på karaktärer
-         listItem.addEventListener('click', () => {
-            // Om samma karaktär klickas på två gånger - dölj från lista
-            if (currentCharacter === character) {
-                clearCharacterResult(); // Funktion som kallas på för att dölja karaktär
-                currentCharacter = null;
-            } else { // Annars visa 
-                showCharacterInfo(character); // Funktion som visar info om karaktär som klickats på
-                currentCharacter = character;
-            }
-        });
-
-        // Lägg till nytt li-element
-        characterResultEL.appendChild(listItem);
-    });
-
-     // TA BORT SEN
-     console.table(characterData);
-}
-
 function showCharacterInfo(character) {
     const characterInfo = document.getElementById('character-info');
-    characterInfo.innerHTML = `
-        <h2>${character.name}</h2>
-        <img src="${character.image}" alt="${character.name}">
-        <p>House: ${character.house}</p>
-        <p>Born: ${character.dateOfBirth}</p>
-        <p>Patronus: ${character.patronus}</p>
-    `;
+
+    if (character.length > 0) { // Om karaktären hittades
+        const characterData = character[0]; // Ta den första karaktären från den filtrerade listan
+
+        characterInfo.innerHTML = `
+            <h2>${characterData.name}</h2>
+            <img src="${characterData.image}" alt="${characterData.name}">
+            <p>House: ${characterData.house}</p>
+            <p>Born: ${characterData.dateOfBirth}</p>
+            <p>Patronus: ${characterData.patronus}</p>
+        `;
+    } else { // Om ingen karaktär hittades
+        characterInfo.innerHTML = "<p>Kan inte hitta karaktär</p>";
+    }
 }
 
 // Rensa sökresultat
 function clearCharacterResult() {
-    const characterResult = document.getElementById('character-info');
-    characterResult.innerHTML = ''; 
+    const characterInfo = document.getElementById('character-info');
+    characterInfo.innerHTML = ''; 
 }

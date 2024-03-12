@@ -39,7 +39,14 @@ main {
     font-family: base.$primary-fonts;
 }
 
+.spell-link {
+    font-size: base.$second-heading-fontsize;
+    text-decoration: none;
+}
 
+.spell-link i {
+    /*  ikonrelaterade regler här */
+}
 
 /* Design av huvudmeny med nestlad regel */
 header {
@@ -192,12 +199,9 @@ p {
   font-size: base.$paragraph-fontsize;
   text-align: center;
   font-family: base.$secondary-fonts;
-  color: base.$second-font-color;
+  color: base.$house-info-paragraph;
 }
 
-.heading {
-  font-weight: 600;
-}
 
 /* Hus-div */
 #houses ul {
@@ -228,47 +232,41 @@ p {
   .gryffindor {
     color: base.$Gryffindor-red;
     text-shadow: 2px 2px 5px base.$Gryffindor-dark-red;
-    background: base.$footerColor;
+    background: base.$houseName;
     @include component.inset-boxshadow;
   }
   
   .slytherin {
     color: base.$Slytherin-green;
     text-shadow: 2px 2px 5px base.$Slytherin-dark-green;
-    background: base.$footerColor;
+    background: base.$houseName;
     @include component.inset-boxshadow;
   }
   
   .hufflepuff {
     color: base.$Hufflepuff-yellow;
     text-shadow: 2px 2px 5px base.$Hufflepuff-dark-yellow;
-    background: base.$footerColor;
+    background: base.$houseName;
     @include component.inset-boxshadow;
   }
   
   .ravenclaw {
     color: base.$Ravenclaw-blue;
     text-shadow: 2px 2px 5px base.$Ravenclaw-dark-blue;
-    background: base.$footerColor;
+    background: base.$houseName;
     @include component.inset-boxshadow;
   }
   
   #house-info {
     text-align: center;
-    background-color: base.$menuColor;
+    background-color: rgba(63, 62, 62, 0.85);
     border-top-left-radius: 18px;
     border-top-right-radius: 18px;
   }
   
-  
-  #house-info ul,
-  #house-info li {
-    display: inline-block;
-    padding: 20px;
-    list-style-type: none;
-    font-weight: 500;
-    font-size: base.$paragraph-fontsize;
-    text-align: center; 
+ 
+  .heading {
+    font-size: base.$third-heading-fontsize;
   }
   
   // Styla hus-namn i house-info div
@@ -316,12 +314,24 @@ p {
     @include component.color-gradient-ravenclaw;
   }
   
+   /* Lista på karaktärer i hus */
+   #house-info ul,
+   #house-info li {
+     display: inline-block;
+     padding: 20px;
+     list-style-type: none;
+     font-weight: 500;
+     font-size: base.$paragraph-fontsize;
+     text-align: center; 
+   }
+ 
+
   /* Namn på alla karakärer i ett hus */
   #characterList .characterItem {
     @include component.box-shadow;
     margin: 10px;
     font-family: base.$secondary-fonts;
-    background-color: base.$footerColor;
+    background-color: base.$houseName;
     border-radius: 8px;
   }
   
@@ -336,13 +346,13 @@ p {
     width: 100%;
     flex-direction: column;
     @include component.center;
-    background-color: base.$menuColor;
+    background-color: rgba(63, 62, 62, 0.85);
     border-bottom-left-radius: 18px;
     border-bottom-right-radius: 18px;
   }
   /* Karaktär-info rubrik */
   #member-info h3 {
-    background-color: base.$menuHoverColor;
+    background-color: base.$houseName;
     font-size: base.$member-info-heading-fontsize;
     margin-bottom: 5%;
     border-radius: 8px;
@@ -355,11 +365,12 @@ p {
   }
   
   #member-info img {
-    border: 10px solid #000;
+    border: 10px solid base.$menuHoverColor;
     border-radius: 12px;
     width: 300px;
     height: auto;
     @include component.center;
+    @include component.box-shadow;
   }
 
 
@@ -379,20 +390,24 @@ p {
     background-color: rgba(63, 62, 62, 0.8);
     color: base.$font-color;
     @include component.box-shadow;
-    animation: spellRotate 5s linear infinite alternate;
+    animation-name: spell-box-shadow;
+    animation-duration: 4s;
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
 
 .spellItem p {
     color: base.$font-color;
 }
 
-  .spellItem h4 {
-    text-align: center;
-  }
+.spellItem h3 {
+    color: base.$font-color;
+}
 
 /* Footer */
 footer {
-    background-color: base.$footerColor;
+    background-color: base.$houseName;
     font-size: base.$paragraph-fontsize;
     font-family: base.$secondary-fonts;
     width: 100%;

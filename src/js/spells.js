@@ -38,12 +38,12 @@ function displaySpells(spellData) {
         // Kontrollera att incantation och effect är definierade
         if (spell.incantation && spell.effect) {
             // Skapa en h4 för incantation
-            const incantationHeader = document.createElement('h4');
-            incantationHeader.textContent = `Incantation: ${spell.incantation}`;
+            const incantationHeader = document.createElement('h3');
+            incantationHeader.textContent = ` ${spell.incantation}`;
             
             // Skapa <p> för effect
             const effectParagraph = document.createElement('p');
-            effectParagraph.textContent = `Effect: ${spell.effect}`;
+            effectParagraph.textContent = ` ${spell.effect}`;
             
             // Skapa en container för varje trollformel
             const spellItem = document.createElement('div');
