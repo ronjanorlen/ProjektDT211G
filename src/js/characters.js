@@ -6,33 +6,24 @@ const searchBox = document.getElementById('search-container');
 const searchButton = document.getElementById('search-character-button');
 const characterInfo = document.getElementById('character-info');
 
-let currentCharacter = null;
-
 // Eventlyssnare för knappar
 searchButton.addEventListener('click', findCharacter);
 clear.addEventListener('click', clearCharacterResult);
 
-window.onload = init();
+window.onload = init;
 
 
 async function init() {
     try {
-        const response = await fetch (characterURL);
+        const response = await fetch(characterURL);
         let characterData = await response.json();
-
-        clearCharacterResult(); // Rensa eventuell tidigare sökning
-
-        // TA BORT SEN
-     console.table(characterData);
-     
-
-        // Ta med data till ny funktion
-        showCharacterInfo(characterData);
-
-    } catch (e) {
-        console.log(e)
-        document.getElementById('error').innerHTML = "<p>Problemos</p>";
         
+        // TA BORT SEN
+        console.table(characterData);
+        
+    } catch (e) {
+        console.log(e);
+        document.getElementById('error').innerHTML = "<p>Problemos</p>";
     }
 }
 
@@ -61,21 +52,30 @@ async function findCharacter() {
     }
 }
 
-function showCharacterInfo(character) {
+function showCharacterInfo(characters) {
     const characterInfo = document.getElementById('character-info');
 
-    if (character.length > 0) { // Om karaktären hittades
-        const characterData = character[0]; // Ta den första karaktären från den filtrerade listan
-
-        characterInfo.innerHTML = `
-            <h2>${characterData.name}</h2>
-            <img src="${characterData.image}" alt="${characterData.name}">
-            <p>House: ${characterData.house}</p>
-            <p>Born: ${characterData.dateOfBirth}</p>
-            <p>Patronus: ${characterData.patronus}</p>
-        `;
+    if (characters.length > 0) { // Om karaktärer hittades
+        let charactersHTML = ''; // Lagra HTML-koden för karaktären
+        characters.forEach(character => {
+            
+            let imageHTML = ''; // Skapa en variabel för bild-HTML som är tom
+            // för att om det inte finns en bild så ska ingen bild visas
+            if (character.image && character.image.trim() !== '') {
+                imageHTML = `<img src="${character.image}" alt="${character.name}">`; // Om det finns en bild, lägg till bild-HTML
+            }
+            charactersHTML += `
+                <h2>${character.name || "Could not find info"}</h2>
+                ${imageHTML}
+                <p>House: ${character.house || "Unknown"}</p>
+                <p>Born: ${character.dateOfBirth || "No one really knows"}</p>
+                <p>Patronus: ${character.patronus || "Hidden for safety reasons"}</p>
+                <p>Actor: ${character.actor || "Trolls have stolen info about actor"}</p>
+            `;
+        });
+        characterInfo.innerHTML = charactersHTML; // Sätt in HTML-koden för alla karaktärer i characterInfo
     } else { // Om ingen karaktär hittades
-        characterInfo.innerHTML = "<p>Kan inte hitta karaktär</p>";
+        characterInfo.innerHTML = "<p>Could not find the character you are looking for, please check your spelling or ask Dumbledore for guidance</p>";
     }
 }
 
