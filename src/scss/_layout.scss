@@ -8,6 +8,17 @@
     box-sizing: border-box;
 }
 
+.spellLibrary {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-image: url('../images/spell-library.jpg'); 
+    background-size: contain; /* Visa hela bakgrundsbilden inom bodyn */
+    background-repeat: repeat-y; /* Upprepa bakgrundsbilden längs sidans höjd */
+    cursor: url('../images/wand.png'), auto; /* Trollstav som muspekare */
+}
 
 body {
     margin: 0;
@@ -17,7 +28,7 @@ body {
     flex-direction: column;
     background-image: url('../images/hoqwartsbackground.jpg'); 
     background-size: cover; /* Så att bilden täcker hela bakgrunden */
-    background-repeat: no-repeat; /* För att undvika att bakgrundsbilden upprepas */
+    background-repeat: no-repeat; /* Upprepa inte bakgrundsbilden */
     cursor: url('../images/wand.png'), auto; /* Trollstav som muspekare */
 }
 
@@ -354,6 +365,24 @@ p {
     @include component.center;
   }
 
+
+  /* Trollformel-div */
+
+#spellContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.spellItem {
+    width: calc(33.33% - 20px); /* Bredden på varje spellItem, minus marginal */
+    margin-bottom: 20px; /* Avstånd mellan spellItems */
+    border: 1px solid #000;
+}
+
+  .spellItem h4 {
+    text-align: center;
+  }
 
 /* Footer */
 footer {
