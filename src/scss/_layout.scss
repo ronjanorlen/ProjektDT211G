@@ -39,13 +39,9 @@ main {
     font-family: base.$primary-fonts;
 }
 
-.spell-link {
+#main-page a {
     font-size: base.$second-heading-fontsize;
     text-decoration: none;
-}
-
-.spell-link i {
-    /*  ikonrelaterade regler här */
 }
 
 /* Design av huvudmeny med nestlad regel */
@@ -405,6 +401,64 @@ p {
     color: base.$font-color;
 }
 
+
+/* Alla karaktärer-sida */
+
+/* Sökrute-container */
+#search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5%;
+}
+
+/* Sökruta */
+#searchCharacter {
+  padding: 10px;
+  border: 2px solid base.$Ravenclaw-blue;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-right: 10px;
+  width: 200px;
+}
+
+#search-character-button, #clear {
+  padding: 10px 20px;
+  background-color: base.$Ravenclaw-dark-blue;
+  border: 2px solid base.$Ravenclaw-blue;
+  margin-right: 10px;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#search-character-button:hover, #clear:hover {
+  background-color: base.$Ravenclaw-blue;
+}
+
+#character-info {
+  background-color: rgba(63, 62, 62, 0.7);
+  border-radius: 18px;
+}
+
+#character-info h2 {
+  font-size: base.$heading-fontsize;
+}
+
+#character-info img {
+  border: 10px solid base.$menuHoverColor;
+  border-radius: 12px;
+  width: 300px;
+  height: auto;
+  @include component.center;
+  @include component.box-shadow;
+  animation-name: member-name;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+}
 /* Footer */
 footer {
     background-color: base.$houseName;
