@@ -62,7 +62,7 @@ main {
 
 /* Design av huvudmeny med nestlad regel */
 header {
-    height: 80px;
+    height: 100px;
     background-color: rgba(36, 38, 51);
     font-family: base.$secondary-fonts;
     position: relative;
@@ -79,7 +79,6 @@ header {
 
 nav {
   background-color: rgba(36, 38, 51);
-    @include component.custom-box-shadow;
     font-size: base.$paragraph-fontsize;
     position: absolute;
     right: 0;
@@ -162,6 +161,7 @@ nav {
     animation-iteration-count: infinite;
     animation-direction: alternate;
 }
+
 
 // Övergripande regler för rubriker och paragrafer
 h1 {
