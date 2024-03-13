@@ -12,8 +12,6 @@
     margin: 0;
     padding: 0;
     max-height: 100vh;
-    display: flex;
-    flex-direction: column;
     background-image: url('../images/spell-library.jpg?as=webp&width=1800'); 
     background-size: cover; /* Visa hela bakgrundsbilden inom bodyn */
     background-repeat: repeat-y; /* Upprepa bakgrundsbilden längs sidans höjd */
@@ -24,8 +22,6 @@ body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
     background-image: url('../images/hoqwartsbackground.jpg?as=webp&width=1800'); 
     background-size: cover; /* Så att bilden täcker hela bakgrunden */
     background-repeat: no-repeat; /* Upprepa inte bakgrundsbilden */
@@ -460,11 +456,11 @@ p {
   width: 200px;
 }
 
-#search-character-button, #clear, #yes-btn, #no-btn {
+#search-character-button, #clear {
   @include component.buttons;
 }
 
-#search-character-button:hover, #clear:hover, #yes-btn:hover, #no-btn:hover {
+#search-character-button:hover, #clear:hover {
   @include component.button-hover;
 }
 
@@ -519,8 +515,178 @@ footer {
 
 // Media Queries //
 
+/* Små skärmar */
+
+@media only screen and (max-width: 600px) {
+  main {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: base.$heading-fontsize;
+  }
+
+  #main-page {
+    width: 90%;
+  }
+
+  #main-page p, #main-page a {
+    font-size: 20px;
+  }
+
+  #houses ul {
+    display: block;
+    padding: 0;
+    text-align: center;
+  }
+  
+  #houses li {
+    margin: 10px;
+    padding: 10px;
+    font-size: 3em;
+    letter-spacing: 2px;
+  }
+
+  #house-info {
+    width: 98%;
+    margin: 0 auto;
+  }
+
+  .heading {
+    font-size: base.$paragraph-fontsize;
+  }
+
+  #house-info ul, #house-info li {
+     font-size: 1em;
+     padding: 15px;
+  }
+  #characterList .characterItem {
+    margin: 5px;
+} 
+
+#yes-no, #spells h4 {
+  width: 95%;
+  margin: 20px auto;
+}
+
+#yes-btn, #no-btn {
+  margin-bottom: 5%;
+}
+
+#spellContainer {
+  display: block;
+}
+.spellItem {
+  width: 90%; 
+  margin: 20px auto; 
+
+}
+.spellItem p {
+  font-size: 18px;
+}
+
+.spellItem h3 {
+  font-size: 20px;
+}
+#search-container {
+  display: block;
+  margin: 10px auto;
+  width: 90%;
+}
+
+/* Sökruta */
+#searchCharacter {
+  width: 90%;
+  margin: 20px;
+  padding: 12px;
+}
+
+#search-character-button, #clear {
+  @include component.buttons;
+  display: block;
+  margin: 20px auto;
+  width: 80%;
+  font-size: 1.2em;
+}
+
+#character-info {
+  width: 98%;
+  margin: 0 auto;
+}
+
+#character-info img {
+  width: 70%;
+}
+}
+
+/* Tablets */
+@media only screen and (min-width: 601px) and (max-width: 1000px) {
+  main {
+    width: 100%;
+  }
+
+  #main-page {
+    width: 90%;
+  }
+
+  #houses ul {
+    display: block;
+    text-align: center;
+  }
+  
+  #houses li {
+    margin: 10px;
+    padding: 10px;
+  }
+
+  #house-info {
+    width: 98%;
+    margin: 0 auto;
+  } 
+  #yes-no, #spells h4 {
+    width: 95%;
+    margin: 20px auto;
+  }
+  
+  #yes-btn, #no-btn {
+    margin-bottom: 5%;
+  }
+  
+  #spellContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 98%;
+    margin: 0 auto;
+}
+
+.spellItem {
+    width: calc(50% - 10px); 
+}
+  .spellItem p {
+    font-size: 18px;
+  }
+  
+  .spellItem h3 {
+    font-size: 20px;
+  }
+
+
+#character-info {
+  border-radius: 18px;
+  width: 98%;
+  margin: 0 auto;
+}
+
+#character-info img {
+  border: 8px solid base.$member-info-border;
+  width: 50%;
+}
+
+}
+
 /* Större skärmar - gör menyn som inline */
-@media only screen and (min-width: 1001px) {
+@media only screen and (min-width: 1001px) and (max-width: 1440px) {
     header {
         padding: 0 1em;
         @include component.custom-box-shadow;
@@ -560,4 +726,14 @@ footer {
         display: none;
     }
 
+    #houses ul {
+      display: block;
+      text-align: center;
+    }
+    
+    #houses li {
+      margin: 10px;
+      padding: 10px;
+    }
+   
 }
