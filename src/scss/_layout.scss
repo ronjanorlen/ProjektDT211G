@@ -36,6 +36,7 @@ body {
     background-image: url('../images/hogwarts.jpg?as=webp&width=1800'); 
     background-size: cover; 
     background-repeat: no-repeat; /* Upprepa inte bakgrundsbilden */
+    background-position: center; /* Centrera bilden */
     cursor: url('../images/wand.png'), auto; 
 }
 
@@ -555,7 +556,7 @@ footer {
   #houses li {
     margin: 10px;
     padding: 10px;
-    font-size: 3em;
+    font-size: 2.8em;
     letter-spacing: 2px;
   }
 
@@ -648,7 +649,10 @@ footer {
   #houses li {
     margin: 10px;
     padding: 10px;
+    font-size: 2.8em;
+    
   }
+
 
   #house-info {
     width: 98%;
@@ -738,7 +742,7 @@ footer {
 /* Större skärmar */
 @media only screen and (min-width: 1001px) and (max-width: 1440px) {
   
-
+  // Lägg husnamnen två på rad fram till 1440px
     #houses ul {
       display: block;
       text-align: center;
