@@ -58,13 +58,16 @@ function showCharacterInfo(characters) {
             `;
         });
         characterInfo.innerHTML = charactersHTML; // Sätt in HTML-koden för alla karaktärer i characterInfo
-    } else { // Om ingen karaktär hittades
+    } else { // Om ingen karaktär hittades, ge hittepå-anledning som meddelande
         characterInfo.innerHTML = "<p>Could not find the character you are looking for, please check your spelling or ask Dumbledore for guidance</p>";
     }
 }
 
-// Rensa sökresultat
+// Rensa sökresultat och inputfält
 function clearCharacterResult() {
     const characterInfo = document.getElementById('character-info');
     characterInfo.innerHTML = ''; 
+
+    const searchInput = document.getElementById('searchCharacter');
+    searchInput.value = '';
 }

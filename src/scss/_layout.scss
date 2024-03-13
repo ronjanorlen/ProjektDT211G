@@ -34,7 +34,7 @@ body {
     padding: 0;
     min-height: 100vh;
     background-image: url('../images/hogwarts.jpg?as=webp&width=1800'); 
-    background-size: cover; /* Så att bilden täcker hela bakgrunden */
+    background-size: cover; 
     background-repeat: no-repeat; /* Upprepa inte bakgrundsbilden */
     cursor: url('../images/wand.png'), auto; 
 }
@@ -114,13 +114,13 @@ nav {
     }
 }
 
-/* Menyknapp, öppna meny */
+/* Menyknapp, öppna */
 .menu-btn {
     display: flex;
     align-items: center;
     padding: 8px 15px;
     background-color: rgba(36, 38, 51);
-    border: rgb(0, 0, 0) solid 2px;
+    border: 2px solid rgb(0, 0, 0);
 }
 
 .open {
@@ -136,7 +136,7 @@ nav {
     margin-right: 10px;
     color: base.$font-color;
     font-size: 20px;
-    animation-name: menu;
+    animation-name: menu;  // Animation på ikon i meny
     animation-timing-function: ease-in-out;
     animation-duration: 3s;
     animation-iteration-count: infinite;
@@ -148,12 +148,13 @@ nav {
   color: base.$font-color;
 }
 
-/* Meny knapp, stäng */
+/* Menyknapp, stäng */
 .close {
     margin: 1em 1.5em;
     padding: 10px 15px;
 }
 
+// Animation på ikon i meny
 .fa-solid.fa-bars-staggered {
   animation-name: menu;
     animation-timing-function: ease-in-out;
@@ -162,7 +163,7 @@ nav {
     animation-direction: alternate;
 }
 
-
+// Övergripande regler för rubriker och paragrafer
 h1 {
     font-size: base.$welcome-text;
     color: base.$font-color;
@@ -202,6 +203,7 @@ p {
 
 
 /* Hus-div */
+// Övergripande regler för objekt i lista
 #houses ul {
     display: flex;
     justify-content: center;
@@ -260,6 +262,8 @@ p {
     @include component.inset-boxshadow;
   }
   
+
+  // Information om hus
   #house-info {
     text-align: center;
     @include component.background-color;
@@ -267,12 +271,13 @@ p {
     border-top-right-radius: 18px;
   }
   
- 
+ // Regel för "grundare", "färger", "spöke", "djur", "element", "sällskapsrum"
   .heading {
     font-size: base.$third-heading-fontsize;
   }
   
   // Styla hus-namn i house-info div
+  // Första "block"
   .house-name.gryffindor {
     color: base.$font-color;
     @include component.color-gradient-gryffindor; 
@@ -297,6 +302,7 @@ p {
     @include component.border-house-info;
   }
   
+  // Andra "block"
   .house-name-second.gryffindor {
     color: base.$font-color;
     @include component.color-gradient-gryffindor;
@@ -317,7 +323,7 @@ p {
     @include component.color-gradient-ravenclaw;
   }
   
-   /* Lista på karaktärer i hus */
+   /* Lista på karaktärer i hus under "members of XXX house */
    #house-info ul,
    #house-info li {
      display: inline-block;
@@ -329,7 +335,7 @@ p {
    }
  
 
-  /* Namn på alla karakärer i ett hus */
+  /* Namnen på alla karakärer i ett hus */
   #characterList .characterItem {
     @include component.box-shadow;
     margin: 10px;
@@ -338,13 +344,14 @@ p {
     border-radius: 8px;
   }
   
+  // Vid hover på namn
   .characterItem:hover {
     animation-name: character-hover;
     animation-duration: 1s;
   }
   
   
-  /* Karaktär-info-div */
+  /* Member-info-div */
   #member-info {
     width: 100%;
     flex-direction: column;
@@ -353,7 +360,7 @@ p {
     border-bottom-left-radius: 18px;
     border-bottom-right-radius: 18px;
   }
-  /* Karaktär-info rubrik */
+  /* Member-info rubrik */
   #member-info h3 {
     background-color: base.$houseName;
     font-size: base.$member-info-heading-fontsize;
@@ -366,7 +373,7 @@ p {
     animation-iteration-count: infinite;
     animation-direction: alternate-reverse;
   }
-  
+  // Member-info bild
   #member-info img {
     border: 10px solid base.$member-info-border;
     border-radius: 12px;
@@ -378,6 +385,7 @@ p {
 
 
   /* Trollformel-sida */
+  // Container med ja eller nej knappar
   #yes-no {
     display: flex;
     flex-direction: column;
@@ -388,14 +396,8 @@ p {
     border: 2px solid #000;
     border-radius: 15px;
   }
-#spells h3 {
-  background-color: rgba(36, 38, 51, 0.7);
-  text-align: center;
-  font-size: base.$paragraph-fontsize;
-  color: base.$primary-heading-color;
-  border-radius: 10px;
-  padding: 2%;
-}
+
+    // Ja och nej knappar
   #yes-btn, #no-btn {
     @include component.buttons;
     margin-bottom: 2%;
@@ -409,12 +411,24 @@ p {
     @include component.button-hover;
   }
 
+  // Div där trollforlmer eller meddelande visas, regler fär rubrik
+#spells h3 {
+  background-color: rgba(36, 38, 51, 0.7);
+  text-align: center;
+  font-size: base.$paragraph-fontsize;
+  color: base.$primary-heading-color;
+  border-radius: 10px;
+  padding: 2%;
+}
+ 
+// Container som skapas med vardera trollformel i
 #spellContainer {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
 
+// Trollformel-item
 .spellItem {
     width: calc(33.33% - 20px); 
     margin-bottom: 20px; 
@@ -430,11 +444,8 @@ p {
     animation-direction: alternate;
 }
 
-.spellItem p {
-    color: base.$font-color;
-}
-
-.spellItem h3 {
+// Trollformel - effekt och namn
+.spellItem p, .spellItem h3 {
     color: base.$font-color;
 }
 
@@ -456,9 +467,10 @@ p {
   border-radius: 5px;
   font-size: 16px;
   margin-right: 10px;
-  width: 200px;
+  width: 300px;
 }
 
+// Search- och clearknapp
 #search-character-button, #clear {
   @include component.buttons;
 }
@@ -467,9 +479,11 @@ p {
   @include component.button-hover;
 }
 
+// Karaktärs-info-ruta
 #character-info {
   @include component.background-color;
   border-radius: 18px;
+  margin-bottom: 10%;
 }
 
 #character-info h2 {
@@ -592,7 +606,6 @@ footer {
   width: 90%;
 }
 
-/* Sökruta */
 #searchCharacter {
   width: 90%;
   margin: 20px;
@@ -683,7 +696,7 @@ footer {
 
 }
 
-/* Större skärmar - gör menyn som inline */
+/* Större skärmar, gör menyn inline */
 @media only screen and (min-width: 1000px) {
   header {
       padding: 0 1em;
@@ -712,21 +725,17 @@ footer {
   }
 
   nav ul {
-      height: 100%;
-  }
+    height: 100%;
+}
 
   nav li {
       display: inline;
       padding: 2.6em 0;
   }
 
-  .animation-btn2 {
-      display: none;
-  }
-
 }
 
-/* Större skärmar - gör menyn som inline */
+/* Större skärmar */
 @media only screen and (min-width: 1001px) and (max-width: 1440px) {
   
 

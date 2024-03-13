@@ -1,12 +1,10 @@
 "use strict";
-// TA BORT DENNA INNAN PUBLICERING
-console.log("Test av JavaScript");
 
-// Hämta in meny-knappar
+// Hämta meny-knappar
 let openBtn = document.getElementById("open-menu");
 let closeBtn = document.getElementById("close-menu");
 
-// Eventlyssnare
+// Eventlyssnare för öppna- och stängknappar
 openBtn.addEventListener('click', toggleMenu);
 closeBtn.addEventListener('click', toggleMenu);
 
@@ -14,7 +12,7 @@ closeBtn.addEventListener('click', toggleMenu);
 function toggleMenu() {
    let navMenuEl = document.getElementById("nav-menu");
 
-    // Hämtar in css för menyn
+    // Hämta in styling för menyn
     let style = window.getComputedStyle(navMenuEl);
 
     // Kontrollera om navigering är synlig eller ej, ändrar display block/none

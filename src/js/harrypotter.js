@@ -1,10 +1,11 @@
 "use strict";
 
-// Hämta data från webbtjänst
+// Variabler för hus- och karaktärAPI:er
 
 const housesURL = 'https://wizard-world-api.herokuapp.com/Houses';
 const characterBaseURL = 'https://hp-api.onrender.com/api/characters/house/';
 
+// När sidan laddas, kör init-funktion
 window.onload = init();
 
 let currentHouse = null; // För att kunna visa/dölja husen
@@ -30,10 +31,10 @@ async function init() {
 function displayHouses(houseData) {
     const houseDataEL = document.getElementById('houses');
 
-    // Skapa en ny ul-element
+    // Skapa ul-element
     const ul = document.createElement('ul');
 
-    // Skapa nya li-element för varje hus och lägg till dem i ul-elementet
+    // Skapa nya li-element för varje hus
     houseData.forEach((house) => {
         const listItem = document.createElement('li');
         listItem.textContent = house.name;
