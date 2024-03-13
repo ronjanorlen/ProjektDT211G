@@ -56,3 +56,12 @@
         transform: rotate(2deg);
     }
 }
+
+@keyframes menu-closed {
+    from {
+        transform: translate(0px, 0px);
+    }
+    to {
+        transform: translate(0px, -5px); 
+    }
+}

@@ -34,7 +34,7 @@ async function showSpells() {
 // Om klickat på nej - visa inga trollformler, bara meddelande
 function showNoSpellsMessage() {
     const spellDataEL = document.getElementById('spells');
-    spellDataEL.innerHTML = "<h4>Sorry, we only manage mischief in here..</h4>";
+    spellDataEL.innerHTML = "<h3>Sorry, we only manage mischief in here..</h3>";
 }
 
 
